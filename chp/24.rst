@@ -571,7 +571,25 @@ Haskell 并行编程
 
 
 Normal form and head normal form
---------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The familiar seq function evaluates an expression to what we call head normal form (abbreviated HNF). It stops once it reaches the outermost constructor (the “head”). This is distinct from normal form (NF), in which an expression is completely evaluated. No comments
+
+You will also hear Haskell programmers refer to weak head normal form (WHNF). For normal data, weak head normal form is the same as head normal form. The difference only arises for functions, and is too abstruse to concern us here. 2 comments
+
+排序
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+下面是一个普通的 ``Haskell`` 函数，其使用分治法对一个列表进行排序：
+
+::
+
+    -- file: ch24/Sorting.hs
+    sort :: (Ord a) => [a] -> [a]
+    sort (x:xs) = lesser ++ x:greater
+        where lesser  = sort [y | y <- xs, y <  x]
+              greater = sort [y | y <- xs, y >= x]
+    sort _ = []
+
+这个函数脱胎于众所周知的快速排序算法，是一段 ``Haskell`` 程序员中流传的经典代码：在 ``Haskell`` 教程中，它经常以仅有一行的形式出现，以向读者炫耀 ``Haskell`` 的表达能力。此处，我们将其代码分解为多行，以便于比较其顺序版本和并行版本。
 
 
 
