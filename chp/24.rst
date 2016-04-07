@@ -570,15 +570,18 @@ Haskell 并行编程
 但是我们可以确定，使用 ``Haskell`` 的并发特性开发并行代码时，有许多更简单的方法。在一个普通的 Haskell 函数上稍加变化，就可以并行求值。
 
 
-Normal form and head normal form
+Normal form 与 head normal form
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The familiar seq function evaluates an expression to what we call head normal form (abbreviated HNF). It stops once it reaches the outermost constructor (the “head”). This is distinct from normal form (NF), in which an expression is completely evaluated. No comments
 
-You will also hear Haskell programmers refer to weak head normal form (WHNF). For normal data, weak head normal form is the same as head normal form. The difference only arises for functions, and is too abstruse to concern us here. 2 comments
+我们知道 ``seq`` 函数将一个表达式求值为 head normal form （简写为 HNF）。其一旦接触到最外层的构建函数（"head"），便会停止。这不同于 normal form（NF），后者可以将表达式完全求值。
+
+你可能也听 ``Haskell`` 程序员提过 weak head normal form （WHNF）。对正常数据，weak head normal form 与 head normal form 相同。其不同仅体现于函数，但在这儿对我们来说有点太过深奥了。
+
 
 排序
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-下面是一个普通的 ``Haskell`` 函数，其使用分治法对一个列表进行排序：
+
+下面是一个标准的 ``Haskell`` 函数，其使用分治法对一个列表进行排序：
 
 ::
 
